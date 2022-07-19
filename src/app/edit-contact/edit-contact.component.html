@@ -1,0 +1,58 @@
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <p class="h3 fw-bold text-primary">
+            <i class="fa fa-pen">&nbsp;</i>Edit Contact</p>
+            <p class="fst-italic mt-2">
+                Being able to readily access and analyze customer and prospect contact information can make your sales efforts considerably easier and more effective. That's why contact management software is always an option worth exploring. 
+            </p>
+        </div>
+    </div>
+</div>
+<!--Edit contact fomr-->
+
+<pre>{{contactId | json}}</pre>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form (submit)="submitUpdate()">
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.name"  type="text" class="form-control" placeholder="Name" [value]="contact.name" name="name">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.photo"  type="text" class="form-control" placeholder="photo url" [value]="contact.photo" name="photo url">
+                </div>  
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.mobile" type="text" class="form-control" placeholder="mobile No" [value]="contact.mobile" name="mobile">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.email" type="text" class="form-control" placeholder="Email Id" [value]="contact.email" name="email">
+                </div>
+                
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.company" type="text" class="form-control" placeholder="Company" [value]="contact.company" name="company">
+                </div>
+                <div class="mb-2">
+                    <input [(ngModel)]="contact.title" type="text" class="form-control" placeholder="Title" [value]="contact.title" name="title">
+                </div>
+                <div class="mb-2">
+                    <select [(ngModel)]="contact.groupId" class="form-control" [value]="contact.groupId" name="groupId">
+                        <option value="">Select a group</option>
+                        <option [value]="group.id" *ngFor="let group of group">{{group.name}}</option>
+                    </select>
+                </div>
+                    <div class="mb-2">
+                        <input type="submit" class="btn btn-primary" value="update">
+                        <a routerLink="/" class="btn btn-warning">
+                            close
+                        </a>
+                    </div>
+                </form>
+        </div>
+        <div class="col-sm-4">
+            <img [src]="contact.photo" alt="user" class="contact-img">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <p class="h3 fw-bold text-primary"><i class="fa fa-eye">&nbsp;</i>View Contact</p>
+            <p class="fst-italic mt-2">
+                Being able to readily access and analyze customer and prospect contact information can make your sales
+                efforts considerably easier and more effective. That's why contact management software is always an
+                option worth exploring.
+            </p>
+        </div>
+    </div>
+</div>
+<!--Condition baseed sppiner and error message-->
+<div *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+
+<!--Dispaly Error Message-->
+<div *ngIf="!loading && errorMessage">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h4 text-danger fw-bold">{{errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--View Contect Details-->
+<div *ngIf="!loading && isNotEmpty()" class="container">
+    <div class="row align-items-center">
+        <div class="col-sm-4">
+            <img [src]="contact.photo" alt="user" class="contact-img-details">
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Name: <span class="fw-bold">{{contact.name}}</span>
+                </li>
+                <li class="list-group-item list-group-item-success">Email: <span class="fw-bold">{{contact.email}}</span>
+                </li>
+                <li class="list-group-item list-group-item-success">mobile: <span class="fw-bold">{{contact.mobile}}</span></li>
+                <li class="list-group-item list-group-item-success">company: <span class="fw-bold">{{contact.company}}</span></li>
+                <li class="list-group-item list-group-item-success">Title: <span class="fw-bold">{{contact.title}}</span></li>
+                <li class="list-group-item list-group-item-success">Group: <span class="fw-bold">{{contact.groupId}}</span></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!--<pre>{{contact | json}}</pre>-->
+
+    <div class="row mt-2">
+        <div class="col">
+            <a routerLink="/" class="btn btn-warning"><i class="fa fa-arrow-alt-circle-left">&nbsp;</i> Back</a>
+        </div>
+    </div>
+</div>

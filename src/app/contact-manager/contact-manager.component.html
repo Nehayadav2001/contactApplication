@@ -1,0 +1,70 @@
+<div class="container" mt-4>
+    <div class="row">
+        <div class="col">
+            <p class="h3">Contact Application
+                <a class="btn btn-success btn-sm" href="/contact/add"> <i class="fa fa-plus-circle">&nbsp;</i> Add New</a>
+            </p>
+            <p class="fst-italic mt-2">
+                Being able to readily access and analyze customer and prospect contact information can make your sales efforts considerably easier and more effective. That's why contact management software is always an option worth exploring. 
+            </p>
+            <form action="">
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-outline-dark" value="search">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--contion base loading-->
+<div *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+
+<!--Dispaly Error Message-->
+
+<div *ngIf="!loading && errorMessage">
+     <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h4 text-danger fw-bold">{{errorMessage}}</p>
+            </div>
+        </div>
+     </div>
+</div>
+
+<!--{{contacts | json}}</pre>-->
+
+<!--Card Design-->
+<div class="container mt-4" *ngIf="!loading && contacts.length>0">
+    <div class="row">
+        <div *ngFor="let contact of contacts" class="col-md-6"> 
+            <div class="card list-group-item-success shadow-lg my-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-sm-4">
+                            <img [src]="contact.photo" alt="user" class="contact-img">
+                        </div>
+                        <div class="col-sm-7">
+                            <ul class="list-group">
+                                <li class="list-group-item">Name: <span class="fw-bold">{{contact.name}}</span></li>
+                                <li class="list-group-item">Email: <span class="fw-bold">{{contact.email}}</span></li>
+                                <li class="list-group-item">mobile: <span class="fw-bold">{{contact.mobile}}</span></li>
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
+                            <a routerLink="/contact/view/{{contact.id}}" class="btn btn-warning"> <i class="fa fa-eye"></i> </a>
+                            <a routerLink="/contact/edit/{{contact.id}}" class="btn btn-warning"> <i class="fa fa-pen"></i> </a>
+                            <button class="btn btn-danger" (click)="deletecontact(contact.id)"> <i class="fa fa-trash-alt my-1"></i> </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
